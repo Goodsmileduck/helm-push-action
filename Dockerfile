@@ -7,6 +7,7 @@ LABEL maintainer="Serebrennikov Stanislav <goodsmileduck@gmail.com>" \
 ENV HELM_VERSION v2.6.1
 ENV HELM_PLUGIN_PUSH_VERSION v0.7.1
 
+RUN apk add curl tar
 RUN set -ex \
     && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar xz \
     && mv linux-amd64/helm /usr/local/bin/helm \
