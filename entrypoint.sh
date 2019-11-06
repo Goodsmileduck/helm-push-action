@@ -27,6 +27,8 @@ fi
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
+helm init --client-only
+
 helm inspect chart .
 
 helm package .
