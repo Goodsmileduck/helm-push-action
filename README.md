@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: goodsmileduck/yandex-serverless-action@master
+    - uses: goodsmileduck/helm-push-action@master
       env:
         SOURCE_DIR: '.'
         CHART_FOLDER: 'ecs-exporter'
