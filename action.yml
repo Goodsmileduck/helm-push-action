@@ -5,8 +5,8 @@ branding:
   color: 'blue'
   icon: 'upload-cloud'
 inputs: 
-  CloudId:
-    description: 'Helm push to chartmuseum'
+  ChartmuseumUrl:
+    description: 'Url to your Chartmuseum'
     default: ''
 runs:
   using: 'docker'
