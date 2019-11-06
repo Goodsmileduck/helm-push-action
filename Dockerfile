@@ -6,6 +6,7 @@ LABEL maintainer="Serebrennikov Stanislav <goodsmileduck@gmail.com>" \
   org.label-schema.schema-version="1.0"
 ENV HELM_VERSION v2.6.1
 ENV HELM_PLUGIN_PUSH_VERSION v0.7.1
+ENV HELM_HOME=/root/.helm
 
 RUN apk add curl tar bash
 RUN set -ex \
