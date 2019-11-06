@@ -10,7 +10,7 @@ This action uploads code to object storage and update Serverless funstion in Yan
 Place in a `.yml` file such as this one in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
 
 ```yaml
-name: Sync Bucket
+name: Build & Push ecs-exporter chart
 on: push
 
 jobs:
