@@ -25,6 +25,14 @@ if [ -z "$SOURCE_DIR" ]; then
   SOURCE_DIR="."
 fi
 
+if [ -z "$FORCE" ]; then
+  FORCE=""
+elif [ "$FORCE" == "1" ] || [ "$FORCE" == "True" ] || [ "$FORCE" == "TRUE" ]; then
+  FORCE="-f"
+fi
+
+
+
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
 helm init --client-only
@@ -33,4 +41,4 @@ helm inspect chart .
 
 helm package .
 
-helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD}
+helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
