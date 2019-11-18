@@ -22,6 +22,7 @@ jobs:
       env:
         SOURCE_DIR: '.'
         CHART_FOLDER: 'ecs-exporter'
+        FORCE: 'True'
         CHARTMUSEUM_URL: 'https://chartmuseum.url'
         CHARTMUSEUM_USER: '${{ secrets.CHARTMUSEUM_USER }}'
         CHARTMUSEUM_PASSWORD: ${{ secrets.CHARTMUSEUM_PASSWORD }}
@@ -38,6 +39,7 @@ The following settings must be passed as environment variables as shown in the e
 | `CHARTMUSEUM_USER` | Username for chartmuseum  | `secret` | **Yes** |
 | `CHARTMUSEUM_PASSWORD` | Password for chartmuseum | `secret` | **Yes** |
 | `SOURCE_DIR` | The local directory you wish to upload. For example, `./charts`. Defaults to the root of your repository (`.`) if not provided. | `env` | No |
+| `FORCE` | Force chart upload (in case version exist in chartmuseum, upload will fail without `FORCE`). Defaults is `False` if not provided. | `env` | No |
 
 
 ## License
