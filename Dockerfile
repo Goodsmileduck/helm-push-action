@@ -4,13 +4,13 @@ LABEL maintainer="Serebrennikov Stanislav <goodsmileduck@gmail.com>" \
   org.label-schema.name="helm chart push" \
   org.label-schema.vendor="Serebrennikov Stanislav" \
   org.label-schema.schema-version="1.0"
-ENV HELM_VERSION v2.6.1
+ENV HELM_VERSION v3.2.1
 ENV HELM_PLUGIN_PUSH_VERSION v0.7.1
 ENV HELM_HOME=/root/.helm
 
 RUN apk add curl tar bash
 RUN set -ex \
-    && curl -sSL https://storage.googleapis.com/kubernetes-helm/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar xz \
+    && curl -sSL https://get.helm.sh/helm-${HELM_VERSION}-linux-arm64.tar.gz | tar xz \
     && mv linux-amd64/helm /usr/local/bin/helm \
     && rm -rf linux-amd64 \
     && helm init --client-only
