@@ -4,7 +4,7 @@ LABEL maintainer="Serebrennikov Stanislav <goodsmileduck@gmail.com>" \
   org.label-schema.name="helm chart push" \
   org.label-schema.vendor="Serebrennikov Stanislav" \
   org.label-schema.schema-version="1.0"
-ENV HELM_VERSION v3.1.2
+ENV HELM_VERSION v3.2.4
 ENV HELM_PLUGIN_PUSH_VERSION v0.8.1
 ENV HELM_HOME=/root/.helm
 
