@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: goodsmileduck/helm-push-action@v0.1.1
+    - uses: goodsmileduck/helm-push-action@v2
       env:
         SOURCE_DIR: '.'
         CHART_FOLDER: 'ecs-exporter'
@@ -41,6 +41,10 @@ The following settings must be passed as environment variables as shown in the e
 | `SOURCE_DIR` | The local directory you wish to upload. For example, `./charts`. Defaults to the root of your repository (`.`) if not provided. | `env` | No |
 | `FORCE` | Force chart upload (in case version exist in chartmuseum, upload will fail without `FORCE`). Defaults is `False` if not provided. | `env` | No |
 
+## Action versions
+
+- v2: helm v2.16.1
+- v3: helm3  v3.1.2
 
 ## License
 
