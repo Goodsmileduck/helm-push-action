@@ -1,6 +1,6 @@
 # Helm push action
 
-This action lint and package helm chart and publish it to your chartmuseum.
+This action package helm chart and publish it to your chartmuseum.
 
 ## Usage
 
