@@ -1,7 +1,6 @@
 # Helm push action
-> **Note:** To use this action, you must have access to the [GitHub Actions](https://github.com/features/actions) feature. GitHub Actions are currently only available in public beta. You can [apply for the GitHub Actions beta here](https://github.com/features/actions/signup/).
 
-This action uploads code to object storage and update Serverless funstion in Yandex cloud.
+This action lint and package helm chart and publish it to your chartmuseum.
 
 ## Usage
 
@@ -44,7 +43,7 @@ The following settings must be passed as environment variables as shown in the e
 ## Action versions
 
 - v2: helm v2.16.1
-- v3: helm3  v3.1.2
+- v3: helm3 v3.2.4
 
 ## License
 
