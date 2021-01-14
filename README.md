@@ -42,8 +42,8 @@ The following settings must be passed as environment variables as shown in the e
 | `FORCE` | Force chart upload (in case version exist in chartmuseum, upload will fail without `FORCE`). Defaults is `False` if not provided. | `env` | No |
 
 ## Acton versions
-v2: helm v2.16.1
-v3: helm3  v3.1.2
+v2: helm v2.17.0
+v3: helm3  v3.5.0
 
 ## License
 
