@@ -35,10 +35,10 @@ fi
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
-/usr/local/bin/helm inspect chart .
+/opt/helm inspect chart .
 
-/usr/local/bin/helm package .
+/opt/helm package .
 
-/usr/local/bin/helm dependency update .
+/opt/helm dependency update .
 
-/usr/local/bin/helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
+/opt/helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
