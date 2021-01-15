@@ -42,7 +42,7 @@ The following settings must be passed as environment variables as shown in the e
 
 ## Action versions
 
-- v2: helm v2.16.1
+- v2: helm v2.17.0
 - v3: helm3 v3.5.0
 
 ## License
