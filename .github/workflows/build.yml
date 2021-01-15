@@ -4,7 +4,7 @@ on: ['push']
 jobs:
 
   test:
-    runs-on: 'ubuntu-latest'
+    runs-on: 'ubuntu-20.04'
     services:
       chartmuseum:
         image: chartmuseum/chartmuseum:v0.12.0
@@ -32,7 +32,6 @@ jobs:
     - name: 'Test helm version'
       run: 'docker run --rm -i --entrypoint=/opt/helm helm version -c'
     - run: helm version -c
-    - run: ls -l /home/runner/work/_temp/_runner_file_commands
     - name: 'Test helm v3 push'
       uses: ./
       env:
