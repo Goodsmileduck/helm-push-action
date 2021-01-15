@@ -16,6 +16,8 @@ jobs:
           STORAGE_LOCAL_ROOTDIR: /charts
           BASIC_AUTH_USER: admin
           BASIC_AUTH_PASS: test
+        volumes:
+        - /tmp:/charts
 
     steps:
     - uses: 'actions/checkout@v2'
