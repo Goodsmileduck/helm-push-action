@@ -40,9 +40,12 @@ The following settings must be passed as environment variables as shown in the e
 | `SOURCE_DIR` | The local directory you wish to upload. For example, `./charts`. Defaults to the root of your repository (`.`) if not provided. | `env` | No |
 | `FORCE` | Force chart upload (in case version exist in chartmuseum, upload will fail without `FORCE`). Defaults is `False` if not provided. | `env` | No |
 
-## Acton versions
-v2: helm v2.17.0
-v3: helm3  v3.3.1
+
+## Action versions
+
+- v2: helm v2.17.0
+- v3: helm3 v3.3.1
+
 
 ## License
 

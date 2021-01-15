@@ -1,0 +1,42 @@
+name: 'Helm3 pipeline'
+on:
+  push:
+    branches:
+      - helm3
+
+jobs:
+
+  test:
+    runs-on: 'ubuntu-20.04'
+    services:
+      chartmuseum:
+        image: chartmuseum/chartmuseum:v0.12.0
+        ports:
+        - 8080:8080
+        env:
+          DEBUG: 1
+          STORAGE: local
+          STORAGE_LOCAL_ROOTDIR: /charts
+          BASIC_AUTH_USER: admin
+          BASIC_AUTH_PASS: test
+        volumes:
+        - /tmp:/charts
+
+    steps:
+    - uses: 'actions/checkout@v2'
+
+    - name: 'Build docker image'
+      run: 'docker build -t helm .'
+
+    - name: 'Test helm v3 version'
+      run: 'docker run --rm -i --entrypoint=helm helm version -c'
+
+    - name: 'Test helm v3 push'
+      uses: ./
+      env:
+        SOURCE_DIR: '.github/'
+        CHART_FOLDER: 'chart'
+        FORCE: 'True'
+        CHARTMUSEUM_URL: 'http://chartmuseum:8080'
+        CHARTMUSEUM_USER: 'admin'
+        CHARTMUSEUM_PASSWORD: 'test'
