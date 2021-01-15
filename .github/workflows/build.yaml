@@ -5,9 +5,20 @@ jobs:
 
   test:
     runs-on: 'ubuntu-latest'
+    services:
+      chartmuseum:
+        image: docker pull chartmuseum/chartmuseum:v0.12.0
+        ports:
+        - 8080:8080
+        env:
+          DEBUG: 1
+          STORAGE: local
+          STORAGE_LOCAL_ROOTDIR: /charts
+          BASIC_AUTH_USER: admin
+          BASIC_AUTH_PASS: test
 
     steps:
-    - uses: 'actions/checkout@v1'
+    - uses: 'actions/checkout@v2'
 
     - name: 'Build'
       run: 'docker build -t helm .'
@@ -20,4 +31,15 @@ jobs:
 
     - name: 'Test helm version'
       run: 'docker run --rm -i --entrypoint=helm helm version -c'
+
+    - name: 'Test helm push'
+      uses: ./
+      env:
+        SOURCE_DIR: '.'
+        CHART_FOLDER: '.github/chart'
+        FORCE: 'True'
+        CHARTMUSEUM_URL: 'http://chartmuseum:8080'
+        CHARTMUSEUM_USER: 'admin'
+        CHARTMUSEUM_PASSWORD: 'test'
+
 
