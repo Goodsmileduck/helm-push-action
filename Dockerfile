@@ -7,7 +7,9 @@ LABEL maintainer="Serebrennikov Stanislav <goodsmileduck@gmail.com>" \
 
 ENV HELM_VERSION v2.17.0
 ENV HELM_PLUGIN_PUSH_VERSION v0.8.1
-ENV HELM_HOME=/root/.helm
+ENV HELM_HOME=/opt
+#ENV XDG_DATA_HOME=/opt/xdg
+#ENV XDG_CACHE_HOME=/opt/xdg
 
 RUN apk add curl tar bash --no-cache
 RUN set -ex \
