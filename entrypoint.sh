@@ -35,6 +35,8 @@ fi
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
+helm init --client-only
+
 helm version -c
 
 helm inspect chart .
