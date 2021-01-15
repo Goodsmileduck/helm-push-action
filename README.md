@@ -1,7 +1,6 @@
 # Helm push action
-> **Note:** To use this action, you must have access to the [GitHub Actions](https://github.com/features/actions) feature. GitHub Actions are currently only available in public beta. You can [apply for the GitHub Actions beta here](https://github.com/features/actions/signup/).
 
-This action uploads code to object storage and update Serverless funstion in Yandex cloud.
+This action package helm chart and publish it to your chartmuseum.
 
 ## Usage
 
@@ -18,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: goodsmileduck/helm-push-action@v0.1.1
+    - uses: goodsmileduck/helm-push-action@v2
       env:
         SOURCE_DIR: '.'
         CHART_FOLDER: 'ecs-exporter'
@@ -43,7 +42,7 @@ The following settings must be passed as environment variables as shown in the e
 
 ## Acton versions
 v2: helm v2.17.0
-v3: helm3  v3.5.0
+v3: helm3  v3.3.1
 
 ## License
 

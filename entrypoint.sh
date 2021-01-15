@@ -35,10 +35,10 @@ fi
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
-helm init --client-only
-
 helm inspect chart .
 
 helm package .
+
+helm dependency update .
 
 helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
