@@ -1,5 +1,8 @@
-name: 'Test'
-on: ['push']
+name: 'Helm3 pipeline'
+on:
+  push:
+    branches:
+      - helm3
 
 jobs:
 
@@ -25,32 +28,12 @@ jobs:
     - name: 'Build docker image'
       run: 'docker build -t helm .'
 
-#    - name: 'Test commands'
-#      run: 'docker run --rm -i -v $PWD:/workspace --workdir=/workspace --entrypoint=/workspace/tests/test-snap.sh helm'
-
-#    - name: 'Test chart'
-#      run: 'docker run --rm -i -v $PWD:/workspace --workdir=/workspace --entrypoint=/workspace/tests/charts/test.sh helm'
-
     - name: 'Test helm v3 version'
       run: 'docker run --rm -i --entrypoint=helm helm version -c'
-    - run: helm version -c
-    - name: 'Test helm v3 push'
-      uses: ./
-      env:
-        SOURCE_DIR: '.github/'
-        CHART_FOLDER: 'chart'
-        FORCE: 'True'
-        CHARTMUSEUM_URL: 'http://chartmuseum:8080'
-        CHARTMUSEUM_USER: 'admin'
-        CHARTMUSEUM_PASSWORD: 'test'
 
-    - name: 'Test helm v2 version'
-      run: 'docker run --rm -i --entrypoint=helm helm version -c'
-    - run: helm version -c
     - name: 'Test helm v3 push'
       uses: ./
       env:
-        HELM_VERSION: 'v2.17.0'
         SOURCE_DIR: '.github/'
         CHART_FOLDER: 'chart'
         FORCE: 'True'
