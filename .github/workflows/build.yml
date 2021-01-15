@@ -35,8 +35,8 @@ jobs:
     - name: 'Test helm v3 push'
       uses: ./
       env:
-        SOURCE_DIR: '.'
-        CHART_FOLDER: '.github/chart'
+        SOURCE_DIR: '.github/'
+        CHART_FOLDER: 'chart'
         FORCE: 'True'
         CHARTMUSEUM_URL: 'http://chartmuseum:8080'
         CHARTMUSEUM_USER: 'admin'

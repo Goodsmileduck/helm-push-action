@@ -35,11 +35,12 @@ fi
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
+helm version -c
+
 helm inspect chart .
 
 helm package .
 
 helm dependency update .
-helm version -c
-helm plugin list
+
 helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
