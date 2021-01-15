@@ -8,9 +8,9 @@ LABEL maintainer="Serebrennikov Stanislav <goodsmileduck@gmail.com>" \
 ENV HELM_VERSION v3.5.0
 ENV HELM_PLUGIN_PUSH_VERSION v0.9.0
 #ENV HELM_PLUGINS=/opt
-ENV XDG_CONFIG_DIR=/etc
-#ENV XDG_DATA_HOME=/opt/xdg
-#ENV XDG_CACHE_HOME=/opt/xdg
+#ENV XDG_CONFIG_DIR=/opt
+ENV XDG_DATA_HOME=/opt/xdg
+ENV XDG_CACHE_HOME=/opt/xdg
 
 RUN apk add curl tar bash --no-cache
 RUN set -ex \
