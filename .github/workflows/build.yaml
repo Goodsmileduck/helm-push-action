@@ -31,7 +31,8 @@ jobs:
 
     - name: 'Test helm version'
       run: 'docker run --rm -i --entrypoint=helm helm version -c'
-    - run: helm --help
+    - run: helm version -c
+    - run: ls -l /home/runner/work/_temp/_runner_file_commands
     - name: 'Test helm v3 push'
       uses: ./
       env:
