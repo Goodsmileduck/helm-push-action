@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: 'actions/checkout@v2'
 
-    - name: 'Build'
+    - name: 'Build docker image'
       run: 'docker build -t helm .'
 
 #    - name: 'Test commands'
