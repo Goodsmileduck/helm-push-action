@@ -41,4 +41,5 @@ cd ${SOURCE_DIR}/${CHART_FOLDER}
 
 /opt/helm dependency update .
 /opt/helm version -c
+/opt/helm plugin list
 /opt/helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
