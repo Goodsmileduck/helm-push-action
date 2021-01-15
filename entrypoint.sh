@@ -35,11 +35,11 @@ fi
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
-/opt/helm inspect chart .
+helm inspect chart .
 
-/opt/helm package .
+helm package .
 
-/opt/helm dependency update .
-/opt/helm version -c
-/opt/helm plugin list
-/opt/helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
+helm dependency update .
+helm version -c
+helm plugin list
+helm push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
