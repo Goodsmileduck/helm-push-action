@@ -31,7 +31,7 @@ jobs:
 
     - name: 'Test helm version'
       run: 'docker run --rm -i --entrypoint=helm helm version -c'
-
+    - run: helm --help
     - name: 'Test helm v3 push'
       uses: ./
       env:
@@ -41,16 +41,4 @@ jobs:
         CHARTMUSEUM_URL: 'http://chartmuseum:8080'
         CHARTMUSEUM_USER: 'admin'
         CHARTMUSEUM_PASSWORD: 'test'
-    - run: helm --help
-    - name: 'Test helm v2 push'
-      uses: ./
-      env:
-        HELM_VERSION: "v2"
-        SOURCE_DIR: '.'
-        CHART_FOLDER: '.github/chart'
-        FORCE: 'True'
-        CHARTMUSEUM_URL: 'http://chartmuseum:8080'
-        CHARTMUSEUM_USER: 'admin'
-        CHARTMUSEUM_PASSWORD: 'test'
-
 
