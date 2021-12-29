@@ -2,7 +2,7 @@ name: 'Helm3 pipeline'
 on:
   push:
     branches:
-      - helm3
+      - master
 
 jobs:
 
