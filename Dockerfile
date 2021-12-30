@@ -19,6 +19,7 @@ RUN set -ex \
     && rm -rf linux-amd64 
 
 RUN apk add --virtual .helm-build-deps git make \
+    && helm plugin uninstall cm-push \
     && helm plugin install https://github.com/chartmuseum/helm-push.git --version ${HELM_PLUGIN_PUSH_VERSION} \
     && apk del --purge .helm-build-deps
 
