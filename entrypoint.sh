@@ -44,6 +44,4 @@ helm dependency update .
 
 helm package .
 
-helm registry login ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD}
-
-helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} ${FORCE}
+helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
