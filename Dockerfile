@@ -18,9 +18,9 @@ RUN set -ex \
     && mv linux-amd64/helm /usr/local/bin/helm \
     && rm -rf linux-amd64 
 
-RUN apk add --virtual .helm-build-deps git make \
-    && helm plugin install https://github.com/chartmuseum/helm-push.git --version ${HELM_PLUGIN_PUSH_VERSION} \
-    && apk del --purge .helm-build-deps
+#RUN apk add --virtual .helm-build-deps git make \
+#    && helm plugin install https://github.com/chartmuseum/helm-push.git --version ${HELM_PLUGIN_PUSH_VERSION} \
+#    && apk del --purge .helm-build-deps
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
