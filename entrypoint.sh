@@ -45,4 +45,4 @@ helm package .
 
 helm registry login ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD}
 
-helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} ${FORCE}
+helm cpush ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} ${FORCE}
