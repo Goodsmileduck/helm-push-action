@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -x
 
 if [ -z "$CHART_FOLDER" ]; then
   echo "CHART_FOLDER is not set. Quitting."
