@@ -1,12 +1,5 @@
-name: 'Helm3 pipeline'
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-
+name: 'Test Helm3 pipeline'
+on: [push]
 jobs:
 
   test:

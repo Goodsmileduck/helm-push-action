@@ -40,11 +40,11 @@ fi
 PACKAGE_FLAGS=""
 
 if [ -n "$CHART_APP_VERSION" ]; then
-  PACKAGE_FLAGS=" --app-version '$CHART_APP_VERSION' "
+  PACKAGE_FLAGS=" --app-version $CHART_APP_VERSION "
 fi
 
 if [ -n "$CHART_VERSION" ]; then
-  PACKAGE_FLAGS="$PACKAGE_FLAGS --version '$CHART_VERSION' "
+  PACKAGE_FLAGS="$PACKAGE_FLAGS --version $CHART_VERSION "
 fi
 
 if [ -n "$FORCE" ]; then
