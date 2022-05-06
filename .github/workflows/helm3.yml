@@ -10,7 +10,7 @@ on:
 jobs:
 
   test:
-    runs-on: 'ubuntu-20.04'
+    runs-on: 'self-hosted'
     services:
       chartmuseum:
         image: chartmuseum/chartmuseum:v0.12.0
@@ -36,10 +36,13 @@ jobs:
 
     - name: 'Test helm v3 push'
       uses: ./
-      env:
-        SOURCE_DIR: '.github/'
-        CHART_FOLDER: 'chart'
-        FORCE: 'True'
-        CHARTMUSEUM_URL: 'http://chartmuseum:8080'
-        CHARTMUSEUM_USER: 'admin'
-        CHARTMUSEUM_PASSWORD: 'test'
+      with:
+        ChartFolder: 'chart'
+        ChartSourcePath: '.github/'
+        ChartmuseumRepoName: 'test'
+        ChartmuseumUrl: 'http://chartmuseum:8080'
+        ChartmuseumUsername: 'admin'
+        ChartmuseumPassword: 'test'
+        ChartVersion: '0.0.1-test'
+        ChartAppVersion: '1.0.0-test'
+        ForceUpload: 'True'

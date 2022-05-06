@@ -5,10 +5,45 @@ branding:
   color: 'blue'
   icon: 'upload-cloud'
 inputs: 
+  ChartFolder:
+    description: 'Name of the folder your Chart.yaml file is in'
+    required: true
+  ChartSourcePath:
+    description: 'The path containing your ChartFolder'
+    required: true
+    default: '.'
+  ChartmuseumRepoName:
+    description: 'The name of your repository to register'
+    required: true
   ChartmuseumUrl:
-    description: 'Url to your Chartmuseum'
+    description: 'The URL of the Chartmuseum server'
+    required: true
+  ChartmuseumUsername:
+    description: 'The username of the Chartmuseum user'
+    required: true
+  ChartmuseumPassword:
+    description: 'The password of the Chartmuseum user'
+    required: true
+  ChartVersion:
+    description: 'Version of the chart'
+    required: false
+  ChartAppVersion:
+    description: 'The version of the software the chart is deploying'
+    required: false
+  ForceUpload:
+    description: 'Force chart version overwrite in Chartmuseum'
+    required: false
     default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  
+  args:
+    - ${{ inputs.ChartFolder }}
+    - ${{ inputs.ChartSourcePath }}
+    - ${{ inputs.ChartmuseumRepoName }}
+    - ${{ inputs.ChartmuseumUrl }}
+    - ${{ inputs.ChartmuseumUsername }}
+    - ${{ inputs.ChartmuseumPassword }}
+    - ${{ inputs.ChartVersion }}
+    - ${{ inputs.ChartAppVersion }}
+    - ${{ inputs.ForceUpload }}
