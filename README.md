@@ -17,19 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: goodsmileduck/helm-push-action@v2
-      env:
-        SOURCE_DIR: '.'
-        CHART_FOLDER: 'ecs-exporter'
-        FORCE: 'True'
-        CHARTMUSEUM_URL: 'https://chartmuseum.url'
-        CHARTMUSEUM_USER: '${{ secrets.CHARTMUSEUM_USER }}'
-        CHARTMUSEUM_PASSWORD: ${{ secrets.CHARTMUSEUM_PASSWORD }}
+    - name: Build and Push Charts
+        uses: MarletteStandards/push-helm-chart-action@repo-add
+        with:
+          ChartFolder: "my-chart"
+          ChartSourcePath: "helm"
+          ChartmuseumRepoName: "chartmuseum"
+          ChartmuseumUrl: ${{ env.ChartmuseumUrl }}
+          ChartmuseumUsername: ${{ env.ChartmuseumUser }}
+          ChartmuseumPassword: ${{ env.ChartmuseumPassword }}
+          ChartVersion: ${{ env.SemVer }}
+          ChartAppVersion: ${{ env.SemVer }}
 ```
 
-### Configuration
+### Older Configuration
 
-The following settings must be passed as environment variables as shown in the example. Sensitive information, especially `CHARTMUSEUM_USER` and `CHARTMUSEUM_PASSWORD`, should be [set as encrypted secrets](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) — otherwise, they'll be public to anyone browsing your repository.
+These settings are old, but can still be used. The following settings may be passed as environment variables as shown in the example. Sensitive information, especially `CHARTMUSEUM_USER` and `CHARTMUSEUM_PASSWORD`, should be [set as encrypted secrets](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) — otherwise, they'll be public to anyone browsing your repository.
 
 | Key | Value | Suggested Type | Required |
 | ------------- | ------------- | ------------- | ------------- |
