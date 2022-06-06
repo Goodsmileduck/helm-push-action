@@ -45,3 +45,4 @@ jobs:
         IS_STABLE: 'true'
         CHARTMUSEUM_USER: 'admin'
         CHARTMUSEUM_PASSWORD: 'test'
+        CHARTMUSEUM_REPO_NAME: harbor-stable
