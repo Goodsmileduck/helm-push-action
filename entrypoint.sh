@@ -8,8 +8,13 @@ if [ -z "$CHART_FOLDER" ]; then
   exit 1
 fi
 
-if [ -z "$CHARTMUSEUM_URL" ]; then
-  echo "CHARTMUSEUM_URL is not set. Quitting."
+if [ -z "$CHARTMUSEUM_URL_CI" ]; then
+  echo "CHARTMUSEUM_URL_CI is not set. Quitting."
+  exit 1
+fi
+
+if [ -z "$CHARTMUSEUM_URL_STABLE" ]; then
+  echo "CHARTMUSEUM_URL_STABLE is not set. Quitting."
   exit 1
 fi
 
@@ -41,9 +46,13 @@ helm version -c
 
 helm inspect chart .
 
-if [[ $CHARTMUSEUM_REPO_NAME ]]; then
+CHARTMUSEUM_URL="${CHARTMUSEUM_URL_CI}"
+
+if [[ $IS_STABLE == "true"  && CHARTMUSEUM_URL="${CHARTMUSEUM_URL_STABLE}" ]]; then
   helm repo add ${CHARTMUSEUM_REPO_NAME} ${CHARTMUSEUM_URL} --username=${CHARTMUSEUM_USER} --password=${CHARTMUSEUM_PASSWORD}
 fi
+
+helm repo add ${CHARTMUSEUM_REPO_NAME} ${CHARTMUSEUM_URL} --username=${CHARTMUSEUM_USER} --password=${CHARTMUSEUM_PASSWORD}
 
 helm dependency update .
 
