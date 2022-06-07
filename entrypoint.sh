@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 set -e
 set -x
 
@@ -39,6 +40,10 @@ cd ${SOURCE_DIR}/${CHART_FOLDER}
 helm version -c
 
 helm inspect chart .
+
+if [[ $CHARTMUSEUM_REPO_NAME ]]; then
+  helm repo add ${CHARTMUSEUM_REPO_NAME} ${CHARTMUSEUM_URL} --username=${CHARTMUSEUM_USER} --password=${CHARTMUSEUM_PASSWORD}
+fi
 
 helm dependency update .
 
