@@ -70,7 +70,7 @@ function push_helm(){
 
 if [[ push_helm ]]; then
   echo "Push successful!"
-  exit 1
+  exit 0
 else
   echo "Chartmuseum push failure. Deleting and retrying."
   curl -X "DELETE" "https://chartmuseum.devops.bestegg.com/api/charts/${CHARTMUSEUM_REPO_NAME}/${CHART_APP_VERSION}"
