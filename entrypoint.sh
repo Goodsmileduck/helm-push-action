@@ -68,11 +68,11 @@ function push_helm(){
   return $?
 }
 
-if [[ push_helm() ]]; then
+if [[ push_helm ]]; then
   echo "Push successful!"
   exit 1
 else
   echo "Chartmuseum push failure. Deleting and retrying."
   curl -X "DELETE" "https://chartmuseum.devops.bestegg.com/api/charts/${CHARTMUSEUM_REPO_NAME}/${CHART_APP_VERSION}"
-  exit push_helm()
+  exit push_helm
 fi
