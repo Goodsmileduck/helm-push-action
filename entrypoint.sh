@@ -63,13 +63,6 @@ helm dependency update .
 
 helm package . $PACKAGE_FLAGS
 
-# function push_helm(){
-#   helm cm-push $1 $2 -u "$3" -p "$4" $5
-#   return $?
-# }
-
-# RESULT=(push_helm "${CHARTMUSEUM_REPO_NAME}-*" ${CHARTMUSEUM_URL} ${CHARTMUSEUM_USER} ${CHARTMUSEUM_PASSWORD} ${FORCE})
-
 if helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}; then
   echo "Push successful!"
   exit 0
