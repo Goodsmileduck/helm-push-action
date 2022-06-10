@@ -63,16 +63,11 @@ helm dependency update .
 
 helm package . $PACKAGE_FLAGS
 
-function push_helm(){
-  helm cm-push ${CHARTMUSEUM_REPO_NAME}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
-  return $?
-}
-
-if [[ push_helm ]]; then
+if helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}; then
   echo "Push successful!"
   exit 0
 else
   echo "Chartmuseum push failure. Deleting and retrying."
-  curl -X "DELETE" "https://chartmuseum.devops.bestegg.com/api/charts/${CHARTMUSEUM_REPO_NAME}/${CHART_APP_VERSION}"
-  exit push_helm
+  curl --user "pilot:${CHARTMUSEUM_PASSWORD}" -X "DELETE" "https://chartmuseum.devops.bestegg.com/api/charts/${CHART_FOLDER}/${CHART_APP_VERSION}"
+  helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
 fi
