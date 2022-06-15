@@ -63,4 +63,5 @@ helm dependency update .
 
 helm package . $PACKAGE_FLAGS
 
+# Using the repo name as the chart name and not the chart folder name
 helm cm-push ${CHARTMUSEUM_REPO_NAME}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
