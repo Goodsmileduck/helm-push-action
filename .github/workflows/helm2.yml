@@ -40,5 +40,5 @@ jobs:
         CHARTMUSEUM_URL_UNSTABLE: 'http://chartmuseum:8080'
         CHARTMUSEUM_USER: 'admin'
         CHARTMUSEUM_PASSWORD: 'test'
-        GIT_BRANCH_NAME: 'refs/head/main'
-        GIT_STABLE_BRANCH_NAME: 'main'
+        GIT_BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+        GIT_STABLE_BRANCH_NAME: 'master'

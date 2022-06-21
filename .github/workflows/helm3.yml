@@ -45,5 +45,5 @@ jobs:
         CHARTMUSEUM_USER: 'admin'
         CHARTMUSEUM_PASSWORD: 'test'
         CHARTMUSEUM_REPO_NAME: harbor-stable
-        GIT_BRANCH_NAME: 'refs/head/main'
-        GIT_STABLE_BRANCH_NAME: 'main'
+        GIT_BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+        GIT_STABLE_BRANCH_NAME: 'master'

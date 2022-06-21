@@ -8,13 +8,23 @@ if [ -z "$CHART_FOLDER" ]; then
   exit 1
 fi
 
-if [ -z "$CHARTMUSEUM_URL_CI" ]; then
-  echo "CHARTMUSEUM_URL_CI is not set. Quitting."
+if [ -z "$CHARTMUSEUM_URL_UNSTABLE" ]; then
+  echo "CHARTMUSEUM_URL_UNSTABLE is not set. Quitting."
   exit 1
 fi
 
-if [ -z "$CHARTMUSEUM_URL_STABLE" ]; then
-  echo "CHARTMUSEUM_URL_STABLE is not set. Quitting."
+if [ -z "$CHARTMUSEUM_URL" ]; then
+  echo "CHARTMUSEUM_URL is not set. Quitting."
+  exit 1
+fi
+
+if [ -z "$GIT_STABLE_BRANCH_NAME" ]; then
+  echo "GIT_STABLE_BRANCH_NAME is not set. Quitting."
+  exit 1
+fi
+
+if [ -z "$CHARTMUSEUM_URL" ]; then
+  echo "CHARTMUSEUM_URL is not set. Quitting."
   exit 1
 fi
 
