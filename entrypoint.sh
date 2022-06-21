@@ -50,6 +50,10 @@ helm dependency update .
 
 helm package .
 
-CHARTMUSEUM_URL="${CHARTMUSEUM_URL_CI}"
-[[ $IS_STABLE == "true" ]] && CHARTMUSEUM_URL="${CHARTMUSEUM_URL_STABLE}"
+echo "GIT_BRANCH_NAME=${GIT_BRANCH_NAME}"
+if [[ ! $GIT_BRANCH_NAME =~ .*${GIT_STABLE_BRANCH_NAME}$ ]]; then
+  echo "The git branch isn't the stable one so it will push on the unstable helm registry..."
+  CHARTMUSEUM_URL="${CHARTMUSEUM_URL_UNSTABLE}"
+fi
+
 helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
