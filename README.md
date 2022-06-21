@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: shippeo/helm-push-action@v2
+    - uses: goodsmileduck/helm-push-action@v2
       env:
         SOURCE_DIR: '.'
         CHART_FOLDER: 'ecs-exporter'

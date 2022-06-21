@@ -1,14 +1,10 @@
-name: 'Helm3 pipeline'
+name: 'Helm2 pipeline'
 on:
   push:
     branches:
-      - master
-  pull_request:
-    branches:
-      - master
+      - helm2
 
 jobs:
-
   test:
     runs-on: 'ubuntu-20.04'
     services:
@@ -31,10 +27,10 @@ jobs:
     - name: 'Build docker image'
       run: 'docker build -t helm .'
 
-    - name: 'Test helm v3 version'
+    - name: 'Test helm v2 version'
       run: 'docker run --rm -i --entrypoint=helm helm version -c'
 
-    - name: 'Test helm v3 push'
+    - name: 'Test helm v2 push'
       uses: ./
       env:
         SOURCE_DIR: '.github/'
@@ -44,6 +40,5 @@ jobs:
         CHARTMUSEUM_URL_UNSTABLE: 'http://chartmuseum:8080'
         CHARTMUSEUM_USER: 'admin'
         CHARTMUSEUM_PASSWORD: 'test'
-        CHARTMUSEUM_REPO_NAME: harbor-stable
         GIT_BRANCH_NAME: 'refs/head/main'
         GIT_STABLE_BRANCH_NAME: 'main'
