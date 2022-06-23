@@ -11,5 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: "get-action"
-        uses: MarletteStandards/ms-bump-semver-action@2.0.0
+        uses: MarletteStandards/ms-bump-semver-action@2.0.1
         id: get-bump-version
