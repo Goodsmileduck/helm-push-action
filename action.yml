@@ -15,6 +15,7 @@ inputs:
   ChartmuseumRepoName:
     description: 'The name of your repository to register'
     required: true
+    default: chartmuseum
   ChartmuseumUrl:
     description: 'The URL of the Chartmuseum server'
     required: true
