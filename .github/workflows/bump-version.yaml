@@ -1,0 +1,15 @@
+name: Bump Version
+
+on: [push, pull_request]
+
+jobs:
+  tag_new_release:
+    if: (( github.ref == 'refs/heads/main' ) ||  (github.ref == 'refs/heads/master') ) || ((github.event_name == 'pull_request') && contains(fromJson('["opened","synchronize"]'),github.event.action))
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-bump-version.outputs.newVersion}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: "get-action"
+        uses: MarletteStandards/ms-bump-semver-action@2.0.0
+        id: get-bump-version
