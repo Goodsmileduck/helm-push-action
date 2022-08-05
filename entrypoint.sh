@@ -63,4 +63,4 @@ helm dependency update .
 
 # Using the repo name as the chart name and not the chart folder name
 PACKAGE=$(helm package --app-version $CHART_APP_VERSION --version $CHART_VERSION . | rev | cut -d'/' -f1 | rev)
-helm cm-push --force $PACKAGE chartmuseum
+curl -u "$CHARTMUSEUM_USER:$CHARTMUSEUM_PASSWORD" "$CHARTMUSEUM_URL" --upload-file "$PACKAGE"
