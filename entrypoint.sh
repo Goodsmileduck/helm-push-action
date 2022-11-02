@@ -63,4 +63,10 @@ helm dependency update .
 
 # Using the repo name as the chart name and not the chart folder name
 PACKAGE=$(helm package --app-version $CHART_APP_VERSION --version $CHART_VERSION . | rev | cut -d'/' -f1 | rev)
-curl -u "$CHARTMUSEUM_USER:$CHARTMUSEUM_PASSWORD" "$CHARTMUSEUM_URL" --upload-file "$PACKAGE"
+if [ -z "$CHARTMUSEUM_URL" == "https://chartmuseum.devops.bestegg.com/"]; then
+  echo "CHARTMUSEUM_URL is set to Chartmuseum"
+  helm cm-push --force $PACKAGE chartmuseum
+else
+  echo "CHARTMUSEUM_URL is set to Nexus"
+  curl -u "$CHARTMUSEUM_USER:$CHARTMUSEUM_PASSWORD" "$CHARTMUSEUM_URL" --upload-file "$PACKAGE"
+fi
