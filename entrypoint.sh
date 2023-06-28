@@ -57,6 +57,9 @@ helm version -c
 
 helm repo add "$CHARTMUSEUM_REPO_NAME" "$CHARTMUSEUM_URL" --username "$CHARTMUSEUM_USER" --password "$CHARTMUSEUM_PASSWORD"
 
+# This will allow a user to specify @nexus in their Chart.yaml
+helm repo add @nexus "$CHARTMUSEUM_URL" --username "$CHARTMUSEUM_USER" --password "$CHARTMUSEUM_PASSWORD"
+
 helm inspect chart .
 
 helm dependency update .
