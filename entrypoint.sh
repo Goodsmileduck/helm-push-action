@@ -27,7 +27,7 @@ if [ -z "$SOURCE_DIR" ]; then
   SOURCE_DIR="."
 fi
 
-if [ -z "$FORCE" ]; then
+if [ -z "$FORCE" ] || [ "$FORCE" == "False" ] || [ "$FORCE" == "FALSE" ]; then
   FORCE=""
 elif [ "$FORCE" == "1" ] || [ "$FORCE" == "True" ] || [ "$FORCE" == "TRUE" ]; then
   FORCE="-f"
