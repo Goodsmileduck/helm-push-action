@@ -22,6 +22,7 @@ jobs:
         SOURCE_DIR: '.'
         CHART_FOLDER: 'ecs-exporter'
         FORCE: 'True'
+        SKIP_SECURE: 'False'
         CHARTMUSEUM_URL: 'https://chartmuseum.url'
         CHARTMUSEUM_USER: '${{ secrets.CHARTMUSEUM_USER }}'
         CHARTMUSEUM_PASSWORD: ${{ secrets.CHARTMUSEUM_PASSWORD }}
@@ -36,6 +37,7 @@ The following settings must be passed as environment variables as shown in the e
 | `CHARTMUSEUM_URL` | Chartmuseum url | `env` | **Yes** |
 | `CHARTMUSEUM_USER` | Username for chartmuseum  | `secret` | **Yes** |
 | `CHARTMUSEUM_PASSWORD` | Password for chartmuseum | `secret` | **Yes** |
+| `SKIP_SECURE` | Allowing to push using insecure connection | `env` | No |
 | `FORCE` | Force chart upload (in case version exist in chartmuseum, upload will fail without `FORCE`). Defaults is `False` if not provided. | `env` | No |
 | `SOURCE_DIR` | The local directory you wish to upload. If your chart is in nested folder, `SOURCE_DIR` should be the path from root to the last folder before the one that stores the chart. For example, if your chart is in `./charts/app`, the `SOURCE_DIR` is `./charts/`. Defaults to the root of your repository (`.`) if not provided. | `env` | No |
 | `CHART_FOLDER` | Folder with charts in repo. This should be the name of the folder where the chart is in. For example, if your chart is in `./charts/app`, the `CHART_FOLDER` is `app` | `env` | **Yes** |

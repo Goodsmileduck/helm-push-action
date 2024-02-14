@@ -33,6 +33,11 @@ elif [ "$FORCE" == "1" ] || [ "$FORCE" == "True" ] || [ "$FORCE" == "TRUE" ]; th
   FORCE="-f"
 fi
 
+if [ -z "$SKIP_SECURE" ] || [ "$SKIP_SECURE" == "False" ] || [ "$SKIP_SECURE" == "FALSE" ]; then
+  SKIP_SECURE=""
+elif [ "$SKIP_SECURE" == "1" ] || [ "$SKIP_SECURE" == "True" ] || [ "$SKIP_SECURE" == "TRUE" ]; then
+  SKIP_SECURE="--insecure"
+fi
 
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
@@ -49,4 +54,4 @@ helm dependency update .
 
 helm package .
 
-helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE}
+helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE} ${SKIP_SECURE}
