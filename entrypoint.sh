@@ -39,6 +39,31 @@ elif [ "$SKIP_SECURE" == "1" ] || [ "$SKIP_SECURE" == "True" ] || [ "$SKIP_SECUR
   SKIP_SECURE="--insecure"
 fi
 
+if [ -z "$SSL_CERTIFICATE_PATH" ]; then
+  SSL_CERTIFICATE_PATH=""
+elif [ "$SSL_CERTIFICATE_PATH" != "" ]; then
+  SSL_CERTIFICATE_PATH="--cert-file ../../${SSL_CERTIFICATE_PATH}"
+fi
+
+if [ -z "$SSL_CERTIFICATE_CA_PATH" ]; then
+  SSL_CERTIFICATE_CA_PATH=""
+elif [ "$SSL_CERTIFICATE_CA_PATH" != "" ]; then
+  SSL_CERTIFICATE_CA_PATH="--ca-file ../../${SSL_CERTIFICATE_CA_PATH}"
+fi
+
+if [ -z "$SSL_CERTIFICATE_KEY_PATH" ]; then
+  SSL_CERTIFICATE_KEY_PATH=""
+elif [ "$SSL_CERTIFICATE_KEY_PATH" != "" ]; then
+  SSL_CERTIFICATE_KEY_PATH="--key-file ../../${SSL_CERTIFICATE_KEY_PATH}"
+fi
+
+if [ -z "$DEBUG" ]; then
+  DEBUG_FLAG=""
+elif [ "$DEBUG" == "1" ] || [ "$DEBUG" == "True" ] || [ "$DEBUG" == "TRUE" ]; then
+  DEBUG_FLAG="--debug"
+fi
+
+
 
 cd ${SOURCE_DIR}/${CHART_FOLDER}
 
@@ -54,4 +79,4 @@ helm dependency update .
 
 helm package .
 
-helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE} ${SKIP_SECURE}
+helm cm-push ${CHART_FOLDER}-* ${CHARTMUSEUM_URL} -u ${CHARTMUSEUM_USER} -p ${CHARTMUSEUM_PASSWORD} ${FORCE} ${SKIP_SECURE} ${SSL_CERTIFICATE_PATH} ${SSL_CERTIFICATE_CA_PATH} ${SSL_CERTIFICATE_KEY_PATH} ${DEBUG_FLAG}
